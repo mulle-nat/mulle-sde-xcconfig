@@ -1,7 +1,13 @@
 ALWAYS_SEARCH_USER_PATHS = NO
 GCC_C_LANGUAGE_STANDARD = gnu11
 PRODUCT_NAME = $(TARGET_NAME)
+
+// ... need to make this smarter 
 CLANG_ENABLE_OBJC_ARC = NO
+CLANG_WARN_OBJC_ROOT_CLASS = NO
+
+// having this set to NO, gived weird problems with "C" globals
+GCC_NO_COMMON_BLOCKS = YES
 
 
 // __STDC_NO_THREADS__ as long as compilers lie
