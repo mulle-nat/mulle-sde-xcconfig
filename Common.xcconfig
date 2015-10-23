@@ -1,3 +1,6 @@
+GCC_VERSION = com.mulle-kybernetik.compilers.mulle-clang
+
+
 ALWAYS_SEARCH_USER_PATHS = NO
 GCC_C_LANGUAGE_STANDARD = gnu11
 PRODUCT_NAME = $(TARGET_NAME)
