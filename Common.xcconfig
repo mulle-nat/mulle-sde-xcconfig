@@ -16,6 +16,8 @@ WARNING_CFLAGS = -Wno-protocol $(inherited)
 ALWAYS_SEARCH_USER_PATHS = NO
 PRODUCT_NAME = $(TARGET_NAME)
 
+GCC_WARN_MISSING_PARENTHESES = NO
+
 // having this set to NO, gived weird problems with "C" globals
 
 
