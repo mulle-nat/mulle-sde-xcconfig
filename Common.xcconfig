@@ -6,6 +6,8 @@ PRODUCT_NAME = $(TARGET_NAME)
 CLANG_ENABLE_OBJC_ARC = NO
 CLANG_WARN_OBJC_ROOT_CLASS = NO
 
+GCC_WARN_MISSING_PARENTHESES = NO
+
 // having this set to NO, gived weird problems with "C" globals
 GCC_NO_COMMON_BLOCKS = YES
 
