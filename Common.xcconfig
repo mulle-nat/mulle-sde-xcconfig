@@ -1,9 +1,7 @@
-GCC_VERSION = com.mulle-kybernetik.compilers.mulle-clang
+#include "_Commmon.xcconfig"
 
 // language features
 
-
-CLANG_LINK_OBJC_RUNTIME = NO
 CLANG_ENABLE_OBJC_ARC = NO
 
 //                                  __STDC_NO_THREADS__ as long as compilers lie
@@ -14,9 +12,7 @@ GCC_C_LANGUAGE_STANDARD = gnu11
 GCC_NO_COMMON_BLOCKS = YES
 
 
-// warnings 
-CLANG_WARN_OBJC_ROOT_CLASS = NO
-GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO
+// warnings
 GCC_WARN_MISSING_PARENTHESES = NO
 WARNING_CFLAGS = -Wno-protocol $(inherited)
 
@@ -27,7 +23,6 @@ PRODUCT_NAME = $(TARGET_NAME)
 
 DEPENDENCIES_DIR = $(PROJECT_DIR)/dependencies
 
-HEADER_SEARCH_PATHS = $(DEPENDENCIES_DIR)/include /usr/local/include $(inherited) 
+HEADER_SEARCH_PATHS = $(DEPENDENCIES_DIR)/include /usr/local/include $(inherited)
 LIBRARY_SEARCH_PATHS = $(DEPENDENCIES_DIR)/lib/$(LIBRARY_CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) $(DEPENDENCIES_DIR)/lib/$(LIBRARY_CONFIGURATION) $(DEPENDENCIES_DIR)/lib/Release$(EFFECTIVE_PLATFORM_NAME) $(DEPENDENCIES_DIR)/lib/Release $(DEPENDENCIES_DIR)/lib /usr/local/lib $(inherited)
 FRAMEWORK_SEARCH_PATHS = $(DEPENDENCIES_DIR)/Frameworks/$(LIBRARY_CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) $(DEPENDENCIES_DIR)/Frameworks/$(LIBRARY_CONFIGURATION) $(DEPENDENCIES_DIR)/Frameworks/Release$(EFFECTIVE_PLATFORM_NAME) $(DEPENDENCIES_DIR)/Frameworks/Release $(DEPENDENCIES_DIR)/Frameworks $(inherited)
-
