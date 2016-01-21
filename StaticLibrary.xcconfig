@@ -1,8 +1,4 @@
-EXECUTABLE_PREFIX = lib
+#include "Library.xcconfig"
+
 EXECUTABLE_EXTENSION=a
-
 MACH_O_TYPE = staticlib
-LINK_WITH_STANDARD_LIBRARIES = NO
-
-PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/${PRODUCT_NAME}
-PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/${PRODUCT_NAME}/private
