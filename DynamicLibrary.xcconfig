@@ -1,0 +1,6 @@
+#include "Library.xcconfig"
+
+EXECUTABLE_EXTENSION=dylib
+MACH_O_TYPE = mh_dylib
+
+LINK_WITH_STANDARD_LIBRARIES = YES
