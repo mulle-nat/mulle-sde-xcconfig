@@ -1,0 +1,9 @@
+//
+// DynamicLibraryOSX.xcconfig
+//  mulle-thread
+//
+//  Created by Nat! on 21.01.16.
+//  Copyright (c) 2015 Mulle kybernetiK. All rights reserved.
+//
+#include "OSX.xcconfig"
+#include "Framework.xcconfig"
