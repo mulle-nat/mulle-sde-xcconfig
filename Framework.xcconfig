@@ -1,3 +1,3 @@
 MACH_O_TYPE=mh_dylib
 WRAPPER_EXTENSION=framework
-INFOPLIST_FILE=Info.plist
+INFOPLIST_FILE=$(TARGET_NAME)/Info.plist
