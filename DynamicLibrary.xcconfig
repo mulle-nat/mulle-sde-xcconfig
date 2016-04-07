@@ -2,5 +2,5 @@
 
 EXECUTABLE_EXTENSION=dylib
 MACH_O_TYPE = mh_dylib
-
+OTHER_LDFLAGS=-all_load $(inherited)
 LINK_WITH_STANDARD_LIBRARIES = YES
