@@ -4,7 +4,6 @@ DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
 ENABLE_NS_ASSERTIONS = NO
 
 OTHER_CFLAGS=-fomit-frame-pointer $(inherited)
-WARNING_CFLAGS = -Wno-protocol $(inherited)
 
 // override common here
 
