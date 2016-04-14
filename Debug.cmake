@@ -1,26 +1,30 @@
+# just for C-projects
+
 include( Common)
 
-set( DEPENDENCY_FRAMEWORK_DIRS
-dependencies/Frameworks/Debug
-dependencies/Frameworks/Release
-dependencies/Frameworks
-)
 
-set( DEPENDENCY_LIBRARY_DIRS
-dependencies/lib/Debug
-dependencies/lib/Release
-dependencies/lib
-)
+#
+# if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
+# mulle-boostrap will set up the paths, so don't mess with it
+#
+# These setting are for ppl. who build the project as a top
+# level project
+#
+if( NOT DEPENDENCIES_DIR )
+   set( DEPENDENCY_FRAMEWORK_DIRS
+   dependencies/Framework/Debug
+   ${DEPENDENCY_LIBRARY_DIRS}
+   )
 
-link_directories(${CMAKE_BINARY_DIR}
-dependencies/Frameworks/Debug
-dependencies/Frameworks/Release
-dependencies/Frameworks
-dependencies/lib/Debug
-dependencies/lib/Release
-dependencies/lib
-)
+   set( DEPENDENCY_LIBRARY_DIRS
+   dependencies/lib/Debug
+   ${DEPENDENCY_LIBRARY_DIRS}
+   )
 
+   link_directories(${CMAKE_BINARY_DIR}
+   ${DEPENDENCY_LIBRARY_DIRS}
+   )
+endif()
 
 set( OTHER_C_FLAGS "-O0 -g -DDEBUG ${UNWANTED_WARNINGS}")
 
