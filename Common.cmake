@@ -8,6 +8,8 @@ set( UNWANTED_WARNINGS "-Wno-objc-protocol-method-implementation -Wno-objc-root-
 set( CMAKE_C_COMPILER "mulle-clang")
 set( CMAKE_CXX_COMPILER "mulle-clang")
 
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -all_load")
+
 #
 # if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
 # mulle-boostrap will set up the paths, so don't mess with it
