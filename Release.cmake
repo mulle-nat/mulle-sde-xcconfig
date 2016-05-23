@@ -1,7 +1,6 @@
 # Just for C-Projects
 include( Common)
 
-
 #
 # if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
 # mulle-boostrap will set up the paths, so don't mess with it
@@ -15,5 +14,8 @@ if( NOT DEPENDENCIES_DIR )
    )
 endif()
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -g -DNDEBUG -Wno-parentheses")
 
+set(OTHER_C_FLAGS "-O3 -g -DNDEBUG ${UNWANTED_WARNINGS}")
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OTHER_C_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OTHER_C_FLAGS}")

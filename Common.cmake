@@ -10,6 +10,8 @@ if( ${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
    endif()
 endif()
 
+set( UNWANTED_WARNINGS "-Wno-objc-protocol-method-implementation -Wno-objc-root-class -Wno-parentheses -Wno-nullability-completeness -Wno-protocol -Wno-objc-missing-super-calls")
+
 
 #
 # if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
@@ -19,6 +21,12 @@ endif()
 # level project
 #
 if( NOT DEPENDENCIES_DIR )
+
+   set( DEPENDENCY_FRAMEWORK_DIRS
+   dependencies/Frameworks/Release
+   dependencies/Frameworks
+   )
+
    set( DEPENDENCY_LIBRARY_DIRS
    dependencies/lib/Release
    dependencies/lib
@@ -28,3 +36,4 @@ if( NOT DEPENDENCIES_DIR )
       dependencies/include
    )
 endif()
+
