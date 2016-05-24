@@ -3,6 +3,12 @@
 # baseline set to 10.6 for rpath
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
 
+if(APPLE)
+  set(CMAKE_POSITION_INDEPENDENT_CODE OFF)
+else
+  set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+endif()
+
 #
 # if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
 # mulle-boostrap will set up the paths, so don't mess with it
