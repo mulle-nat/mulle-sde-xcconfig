@@ -1,6 +1,6 @@
 # Just for C-Projects, use different branch for ObjC
 
-set( UNWANTED_WARNINGS "-Wno-objc-protocol-method-implementation -Wno-objc-root-class -Wno-parentheses -Wno-nullability-completeness -Wno-protocol -Wno-objc-missing-super-calls")
+set( UNWANTED_WARNINGS "-Wno-objc-protocol-method-implementation -Wno-objc-root-class -Wno-parentheses -Wno-nullability-completeness -Wno-protocol -Wno-objc-missing-super-calls -Wno-int-to-void-pointer-cast")
 
 set( CMAKE_C_COMPILER "mulle-clang")
 set( CMAKE_CXX_COMPILER "mulle-clang")
