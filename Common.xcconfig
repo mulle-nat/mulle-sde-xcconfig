@@ -14,7 +14,7 @@ GCC_NO_COMMON_BLOCKS = YES
 
 // warnings
 GCC_WARN_MISSING_PARENTHESES = NO
-WARNING_CFLAGS = -Wno-int-to-void-pointer-cast -Wno-protocol $(inherited)
+WARNING_CFLAGS = -Wno-objc-protocol-method-implementation -Wno-objc-root-class -Wno-parentheses -Wno-nullability-completeness -Wno-protocol -Wno-objc-missing-super-calls -Wno-int-to-void-pointer-cast $(inherited)
 CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES
 CLANG_WARN_UNREACHABLE_CODE = YES
 GCC_WARN_64_TO_32_BIT_CONVERSION = YES
