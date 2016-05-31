@@ -1,18 +1,24 @@
-# Just for C-Projects, use different branch for ObjC
+# just for ObjC-Projects, use different branch for C
 
 set( UNWANTED_WARNINGS "-Wno-objc-protocol-method-implementation -Wno-objc-root-class -Wno-parentheses -Wno-nullability-completeness -Wno-protocol -Wno-objc-missing-super-calls -Wno-int-to-void-pointer-cast")
 
 set( CMAKE_C_COMPILER "mulle-clang")
 set( CMAKE_CXX_COMPILER "mulle-clang")
 
+
 if(APPLE)
   # baseline set to 10.6 for rpath
   set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
-  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -all_load")
   set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
+  set(BEGIN_ALL_LOAD "-all_load")
+  set(END_ALL_LOAD)
 else()
   set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+  set(BEGIN_ALL_LOAD "-Wl,--whole-archive")
+  set(END_ALL_LOAD "-Wl,--no-whole-archive")
 endif()
+
+
 
 #
 # if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
