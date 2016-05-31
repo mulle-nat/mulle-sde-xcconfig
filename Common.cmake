@@ -2,17 +2,20 @@
 # TODO: move stuff to _Common for really common C and ObjC projects...
 #
 set( UNWANTED_C_WARNINGS "-Wno-parentheses -Wno-int-to-void-pointer-cast")
-set( UNWANTED_OBJC_WARNINGS "-Wno-objc-protocol-method-implementation -Wno-objc-root-class -Wno-nullability-completeness -Wno-protocol -Wno-objc-missing-super-calls")
+
 
 if(APPLE)
   # baseline set to 10.6 for rpath
   set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
-  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -all_load")
   set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
+  set(BEGIN_ALL_LOAD "-all_load")
+  set(END_ALL_LOAD)
 else()
-  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--whole-archive")
   set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+  set(BEGIN_ALL_LOAD "-Wl,--whole-archive")
+  set(END_ALL_LOAD "-Wl,--no-whole-archive")
 endif()
+
 
 #
 # if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
