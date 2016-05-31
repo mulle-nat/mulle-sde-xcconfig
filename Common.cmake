@@ -1,7 +1,8 @@
 # Just for C-Projects, use different branch for ObjC
 # TODO: move stuff to _Common for really common C and ObjC projects...
 #
-set( UNWANTED_WARNINGS "-Wno-objc-protocol-method-implementation -Wno-objc-root-class -Wno-parentheses -Wno-nullability-completeness -Wno-protocol -Wno-objc-missing-super-calls -Wno-int-to-void-pointer-cast")
+set( UNWANTED_C_WARNINGS "-Wno-parentheses -Wno-int-to-void-pointer-cast")
+set( UNWANTED_OBJC_WARNINGS "-Wno-objc-protocol-method-implementation -Wno-objc-root-class -Wno-nullability-completeness -Wno-protocol -Wno-objc-missing-super-calls")
 
 if(APPLE)
   # baseline set to 10.6 for rpath
