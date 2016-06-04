@@ -1,8 +1,6 @@
-GCC_C_LANGUAGE_STANDARD = c99
-
 // language features
 CLANG_LINK_OBJC_RUNTIME = NO
-		
+
 // warnings
 CLANG_WARN_OBJC_ROOT_CLASS = NO
 
