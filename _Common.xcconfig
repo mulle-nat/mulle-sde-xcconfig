@@ -1,5 +1,5 @@
-GCC_VERSION = com.mulle-kybernetik.compilers.mulle-clang
-		
+GCC_C_LANGUAGE_STANDARD = c99
+
 // language features
 CLANG_LINK_OBJC_RUNTIME = NO
 		
