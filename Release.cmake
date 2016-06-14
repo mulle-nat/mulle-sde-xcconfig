@@ -1,4 +1,3 @@
-# Just for C-Projects
 include( Common)
 
 #
