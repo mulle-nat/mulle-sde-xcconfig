@@ -27,12 +27,10 @@ endif()
 if( NOT DEPENDENCIES_DIR )
 
    set( DEPENDENCY_FRAMEWORK_DIRS
-   dependencies/Frameworks/Release
    dependencies/Frameworks
    )
 
    set( DEPENDENCY_LIBRARY_DIRS
-   dependencies/lib/Release
    dependencies/lib
    )
 

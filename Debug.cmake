@@ -12,12 +12,12 @@ include( Common)
 #
 if( NOT DEPENDENCIES_DIR )
    set( DEPENDENCY_FRAMEWORK_DIRS
-   dependencies/Framework/Debug
+   dependencies/Debug/Framework
    ${DEPENDENCY_FRAMEWORK_DIRS}
    )
 
    set( DEPENDENCY_LIBRARY_DIRS
-   dependencies/lib/Debug
+   dependencies/Debug/lib
    ${DEPENDENCY_LIBRARY_DIRS}
    )
 
