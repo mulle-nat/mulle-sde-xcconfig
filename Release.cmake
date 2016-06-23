@@ -9,8 +9,8 @@ include( Common)
 # level project
 #
 if( NOT DEPENDENCIES_DIR )
-   link_directories(${CMAKE_BINARY_DIR}
-   ${DEPENDENCY_LIBRARY_DIRS}
+   link_directories( ${CMAKE_BINARY_DIR}
+      ${DEPENDENCY_LIBRARY_DIRS}
    )
 endif()
 

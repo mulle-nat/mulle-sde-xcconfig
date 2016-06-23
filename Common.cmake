@@ -27,11 +27,11 @@ endif()
 if( NOT DEPENDENCIES_DIR )
 
    set( DEPENDENCY_FRAMEWORK_DIRS
-   dependencies/Frameworks
+      dependencies/Frameworks
    )
 
    set( DEPENDENCY_LIBRARY_DIRS
-   dependencies/lib
+      dependencies/lib
    )
 
    include_directories( BEFORE SYSTEM
