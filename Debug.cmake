@@ -11,20 +11,20 @@ include( Common)
 # level project
 #
 if( NOT DEPENDENCIES_DIR )
-   set( DEPENDENCY_FRAMEWORK_DIRS
-   dependencies/Debug/Framework
-   ${DEPENDENCY_FRAMEWORK_DIRS}
-   )
-
    set( DEPENDENCY_LIBRARY_DIRS
-   dependencies/Debug/lib
-   ${DEPENDENCY_LIBRARY_DIRS}
+      ${COMMON_DEPENDENCIES_DIR}/Debug/lib
+      ${DEPENDENCY_LIBRARY_DIRS}
    )
 
    link_directories(${CMAKE_BINARY_DIR}
-   ${DEPENDENCY_LIBRARY_DIRS}
+      ${DEPENDENCY_LIBRARY_DIRS}
    )
 endif()
+
+set( CMAKE_LIBRARY_PATH "${CMAKE_LIBRARY_PATH}
+${COMMON_DEPENDENCIES_DIR}/Debug
+${COMMON_DEPENDENCIES_DIR}")
+
 
 set( OTHER_C_FLAGS "${OTHER_C_FLAGS} -O0 -g -DDEBUG ${UNWANTED_C_WARNINGS}")
 
