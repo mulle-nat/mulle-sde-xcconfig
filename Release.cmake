@@ -9,7 +9,7 @@ include( Common)
 #
 if( NOT DEPENDENCIES_DIR )
    link_directories(${CMAKE_BINARY_DIR}
-   ${DEPENDENCY_LIBRARY_DIRS}
+      ${DEPENDENCY_LIBRARY_DIRS}
    )
 endif()
 

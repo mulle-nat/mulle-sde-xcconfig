@@ -12,17 +12,17 @@ include( Common)
 #
 if( NOT DEPENDENCIES_DIR )
    set( DEPENDENCY_FRAMEWORK_DIRS
-   dependencies/Debug/Framework
-   ${DEPENDENCY_FRAMEWORK_DIRS}
+      dependencies/Debug/Framework
+      ${DEPENDENCY_FRAMEWORK_DIRS}
    )
 
    set( DEPENDENCY_LIBRARY_DIRS
-   dependencies/Debug/lib
-   ${DEPENDENCY_LIBRARY_DIRS}
+      dependencies/Debug/lib
+      ${DEPENDENCY_LIBRARY_DIRS}
    )
 
    link_directories(${CMAKE_BINARY_DIR}
-   ${DEPENDENCY_LIBRARY_DIRS}
+      ${DEPENDENCY_LIBRARY_DIRS}
    )
 endif()
 
