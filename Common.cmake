@@ -31,16 +31,20 @@ endif()
 #
 if( NOT DEPENDENCIES_DIR )
 
+   set( COMMON_DEPENDENCIES_DIR dependencies)
+
    set( DEPENDENCY_FRAMEWORK_DIRS
-   dependencies/Frameworks
+      ${COMMON_DEPENDENCIES_DIR}/Frameworks
    )
 
    set( DEPENDENCY_LIBRARY_DIRS
-   dependencies/lib
+      ${COMMON_DEPENDENCIES_DIR}/lib
    )
 
    include_directories( BEFORE SYSTEM
-      dependencies/include
+      ${COMMON_DEPENDENCIES_DIR}/include
    )
+else()
+   set( COMMON_DEPENDENCIES_DIR ${DEPENDENCIES_DIR})
 endif()
 
