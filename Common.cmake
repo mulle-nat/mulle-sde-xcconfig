@@ -20,6 +20,9 @@ else()
   set(END_ALL_LOAD "-Wl,--no-whole-archive")
 endif()
 
+if( CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  set(OS_SPECIFIC_LIBS  "-ldl -lpthread")
+endif()
 
 
 #
