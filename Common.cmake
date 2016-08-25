@@ -4,6 +4,9 @@
 set( UNWANTED_C_WARNINGS "-Wno-parentheses -Wno-int-to-void-pointer-cast")
 
 
+cmake_policy( SET CMP0054 NEW)
+
+
 if(APPLE)
   # baseline set to 10.6 for rpath
   set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
