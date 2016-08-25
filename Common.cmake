@@ -16,7 +16,7 @@ else()
   if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
      set(BEGIN_ALL_LOAD "")
      set(END_ALL_LOAD "")
-  else
+  else()
      set(BEGIN_ALL_LOAD "-Wl,--whole-archive")
      set(END_ALL_LOAD "-Wl,--no-whole-archive")
   endif()
