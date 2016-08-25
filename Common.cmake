@@ -1,8 +1,9 @@
 # Just for C-Projects, use different branch for ObjC
 # TODO: move stuff to _Common for really common C and ObjC projects...
 #
-set( UNWANTED_C_WARNINGS "-Wno-parentheses -Wno-int-to-void-pointer-cast")
-
+if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
+   set( UNWANTED_C_WARNINGS "-Wno-parentheses -Wno-int-to-void-pointer-cast")
+endif()
 
 cmake_policy( SET CMP0054 NEW)
 
@@ -15,8 +16,13 @@ if(APPLE)
   set(END_ALL_LOAD)
 else()
   set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-  set(BEGIN_ALL_LOAD "-Wl,--whole-archive")
-  set(END_ALL_LOAD "-Wl,--no-whole-archive")
+  if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
+     set(BEGIN_ALL_LOAD "")
+     set(END_ALL_LOAD "")
+  else()
+     set(BEGIN_ALL_LOAD "-Wl,--whole-archive")
+     set(END_ALL_LOAD "-Wl,--no-whole-archive")
+  endif()
 endif()
 
 
