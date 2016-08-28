@@ -5,30 +5,30 @@ cmake_policy( SET CMP0054 NEW)
 
 
 if(APPLE)
-  # baseline set to 10.6 for rpath
-  cmake_minimum_required (VERSION 3.0)
-  set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
-  set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
-  set(BEGIN_ALL_LOAD "-all_load")
-  set(END_ALL_LOAD)
+   # baseline set to 10.6 for rpath
+   cmake_minimum_required (VERSION 3.0)
+   set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
+   set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
+   # linker stuff
+   set(BEGIN_ALL_LOAD "-all_load")
+   set(END_ALL_LOAD)
 else()
-  if(WIN32)
-    # may not be enough though...
-    cmake_minimum_required (VERSION 3.4)
-    set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-    if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel" OR "${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
+   if(WIN32)
+      # may not be enough though...
+      cmake_minimum_required (VERSION 3.4)
+      set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+      set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+      # linker stuff
       set(BEGIN_ALL_LOAD "/OPT:NOREF /OPT:NOICF")
       set(END_ALL_LOAD "/OPT:REF /OPT:ICF")
-    endif()
-  else()
-    cmake_minimum_required (VERSION 3.0)
-    set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-    set(BEGIN_ALL_LOAD "-Wl,--whole-archive")
-    set(END_ALL_LOAD "-Wl,--no-whole-archive")
-  endif()
+   else()
+      cmake_minimum_required (VERSION 3.0)
+      set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+      # linker stuff
+      set(BEGIN_ALL_LOAD "-Wl,--whole-archive")
+      set(END_ALL_LOAD "-Wl,--no-whole-archive")
+   endif()
 endif()
-
 
 
 #
