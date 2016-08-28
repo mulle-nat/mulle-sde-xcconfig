@@ -12,9 +12,10 @@ if( CMAKE_SYSTEM_NAME STREQUAL "Linux")
 endif()
 
 
-if( NOT DEPENDENCIES_DIR )
+if( NOT DEPENDENCIES_DIR)
    set( DEPENDENCY_FRAMEWORK_DIRS
       ${COMMON_DEPENDENCIES_DIR}/Frameworks
+   )
 endif()
 
 
