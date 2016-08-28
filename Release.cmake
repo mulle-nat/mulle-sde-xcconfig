@@ -1,4 +1,5 @@
-# Just for C-Projects
+# just for C-projects
+
 include( Common)
 
 #
@@ -17,7 +18,8 @@ endif()
 set( CMAKE_LIBRARY_PATH "${CMAKE_LIBRARY_PATH}
 ${COMMON_DEPENDENCIES_DIR}")
 
-if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
+
+if( (CMAKE_C_COMPILER_ID STREQUAL "Intel") OR (CMAKE_C_COMPILER_ID STREQUAL "MSVC"))
    set( OTHER_C_FLAGS "${OTHER_C_FLAGS} /O2 /Zo /DNDEBUG=1 ${UNWANTED_C_WARNINGS}")
 else()
    set( OTHER_C_FLAGS "${OTHER_C_FLAGS} -O3 -DNDEBUG=1 ${UNWANTED_C_WARNINGS}")
