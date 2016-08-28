@@ -5,8 +5,8 @@
 #
 include( _Common)
 
-
-if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
-else()
+if ( "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
    set( UNWANTED_C_WARNINGS "-Wno-parentheses -Wno-int-to-void-pointer-cast")
 endif()
+
+message(STATUS "CMAKE_C_COMPILER_ID is ${CMAKE_C_COMPILER_ID}")
