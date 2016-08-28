@@ -7,6 +7,11 @@ set( CMAKE_CXX_COMPILER "mulle-clang")
 
 include( _Common)
 
+if( CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  set(OS_SPECIFIC_LIBS  "-ldl -lpthread")
+endif()
+
+
 if( NOT DEPENDENCIES_DIR )
    set( DEPENDENCY_FRAMEWORK_DIRS
       ${COMMON_DEPENDENCIES_DIR}/Frameworks
