@@ -4,16 +4,12 @@
 #
 include( _Common)
 
-if( (CMAKE_C_COMPILER_ID STREQUAL "Clang") OR
-    (CMAKE_C_COMPILER_ID STREQUAL "AppleClang") OR
-    (CMAKE_C_COMPILER_ID STREQUAL "MulleClang") OR
-    (CMAKE_C_COMPILER_ID STREQUAL "GNU"))
+if( CMAKE_C_COMPILER_ID MATCHES "^(Clang|AppleClang|MulleClang|GNU)$")
    set( UNWANTED_C_WARNINGS "-Wno-parentheses -Wno-int-to-void-pointer-cast")
 else()
-	if( (CMAKE_C_COMPILER_ID STREQUAL "Intel") OR
-       (CMAKE_C_COMPILER_ID STREQUAL "MSVC"))
-    	# C4068: unwanted pragma
-      set( UNWANTED_C_WARNINGS "/wd4068")
+	if( CMAKE_C_COMPILER_ID MATCHES "^(Intel|MSVC)$")
+ 		# C4068: unwanted pragma
+		set( UNWANTED_C_WARNINGS "/D_CRT_SECURE_NO_WARNINGS /wd4068 /wd4113")
 	endif()
 endif()
 
