@@ -2,8 +2,6 @@
 #
 # Common stuff for Debug and Release
 #
-set( CMAKE_C_COMPILER "mulle-clang")
-set( CMAKE_CXX_COMPILER "mulle-clang")
 
 include( _Common)
 
