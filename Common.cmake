@@ -16,14 +16,22 @@ if( NOT DEPENDENCIES_DIR)
    )
 endif()
 
+if( MULLE_C_COMPILER_ID STREQUAL "")
+	set( MULLE_C_COMPILER_ID "${CMAKE_C_COMPILER_ID}")
+endif()
 
-if( CMAKE_C_COMPILER_ID MATCHES "^(Clang|AppleClang|MulleClang|GNU)$")
+if( MULLE_CXX_COMPILER_ID STREQUAL "")
+	set( MULLE_CXX_COMPILER_ID "${CMAKE_CXX_COMPILER_ID}")
+endif()
+
+
+if( MULLE_C_COMPILER_ID MATCHES "^(Clang|AppleClang|MulleClang|GNU)$")
    set( UNWANTED_C_WARNINGS "-Wno-parentheses -Wno-int-to-void-pointer-cast")
 else()
-	if( CMAKE_C_COMPILER_ID MATCHES "^(Intel|MSVC)$")
+	if( MULLE_C_COMPILER_ID MATCHES "^(Intel|MSVC)$")
  		# C4068: unwanted pragma
 		set( UNWANTED_C_WARNINGS "/D_CRT_SECURE_NO_WARNINGS /wd4068 /wd4113")
 	endif()
 endif()
 
-message(STATUS "CMAKE_C_COMPILER_ID is ${CMAKE_C_COMPILER_ID}")
+message(STATUS "MULLE_C_COMPILER_ID is ${MULLE_C_COMPILER_ID}")
