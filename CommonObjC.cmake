@@ -1,0 +1,6 @@
+
+if( NOT DEPENDENCIES_DIR)
+   set( DEPENDENCY_FRAMEWORK_DIRS
+      ${COMMON_DEPENDENCIES_DIR}/Frameworks
+   )
+endif()
