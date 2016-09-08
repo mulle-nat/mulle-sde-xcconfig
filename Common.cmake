@@ -20,7 +20,6 @@ else()
       # may not be enough though...
       cmake_minimum_required (VERSION 3.4)
       set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-      set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
       # linker stuff
       #set(BEGIN_ALL_LOAD "/OPT:NOREF /OPT:NOICF")
       #set(END_ALL_LOAD "/OPT:REF /OPT:ICF")
