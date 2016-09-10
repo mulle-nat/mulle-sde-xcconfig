@@ -1,8 +1,6 @@
 #
-#
 # Common stuff for Debug and Release
 # C and ObjC
-#
 #
 cmake_policy( SET CMP0054 NEW)
 
@@ -33,29 +31,8 @@ else()
 endif()
 
 
-#
-# if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
-# mulle-boostrap will set up the paths, so don't mess with it
-#
-# These setting are for ppl. who build the project as a top
-# level project
-#
-if( NOT DEPENDENCIES_DIR)
-   set( COMMON_DEPENDENCIES_DIR dependencies)
 
-   set( DEPENDENCY_LIBRARY_DIRS
-      ${COMMON_DEPENDENCIES_DIR}/lib
-   )
-
-   include_directories( BEFORE SYSTEM
-      ${COMMON_DEPENDENCIES_DIR}/include
-   )
-else()
-   set( COMMON_DEPENDENCIES_DIR ${DEPENDENCIES_DIR})
-endif()
-
-
-if( "${MULLE_C_COMPILER_ID}" STREQUAL "")
+if( NOT MULLE_C_COMPILER_ID)
    if( ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows") AND ( {CMAKE_C_COMPILER_ID MATCHES "^(Clang|MulleClang)$") )
       set( MULLE_C_COMPILER_ID "MSVC-${CMAKE_C_COMPILER_ID}")
    else()
@@ -63,7 +40,8 @@ if( "${MULLE_C_COMPILER_ID}" STREQUAL "")
    endif()
 endif()
 
-if( "${MULLE_CXX_COMPILER_ID}" STREQUAL "")
+
+if( NOT MULLE_CXX_COMPILER_ID)
    if( ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows") AND ( CMAKE_CXX_COMPILER_ID MATCHES "^(Clang|MulleClang)$") )
       set( MULLE_C_COMPILER_ID "MSVC-${CMAKE_CXX_COMPILER_ID}")
    else()
@@ -81,9 +59,19 @@ else()
    endif()
 endif()
 
-if( MULLE_C_COMPILER_ID MATCHES "^(Intel|MSVC|MSVC-Clang|MSVC-MulleClang)$")
-   set( OTHER_C_FLAGS "${OTHER_C_FLAGS} /Od /Z7 /DDEBUG=1")
-else()
-   set( OTHER_C_FLAGS "${OTHER_C_FLAGS} -O0 -g -DDEBUG")
+
+#
+# if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
+# mulle-boostrap will set up the paths, so don't mess with it
+#
+if( NOT DEPENDENCIES_DIR)
+   set( DEPENDENCIES_DIR dependencies)
 endif()
+
+
+set( DEPENDENCIES_INCLUDE_DIR "${DEPENDENCIES_DIR}/include")
+
+set( DEPENDENCIES_LIBRARY_DIRS
+   ${DEPENDENCIES_DIR}/lib)
+
 

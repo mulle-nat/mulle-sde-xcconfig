@@ -1,6 +1,4 @@
-
-if( NOT DEPENDENCIES_DIR)
-   set( DEPENDENCY_FRAMEWORK_DIRS
-      ${COMMON_DEPENDENCIES_DIR}/Frameworks
-   )
-endif()
+#
+#
+#
+set( DEPENDENCIES_FRAMEWORK_DIRS   ${DEPENDENCIES_DIR}/Frameworks)
