@@ -1,0 +1,35 @@
+#
+# Set Search Paths
+#
+
+include_directories( BEFORE SYSTEM
+${COMMON_INCLUDE_DIRS}
+)
+
+
+link_directories( ${CMAKE_BINARY_DIR}
+${COMMON_LIBRARY_DIRS}
+)
+
+set( CMAKE_LIBRARY_PATH
+${CMAKE_LIBRARY_PATH}
+${COMMON_LIBRARY_DIRS}
+)
+
+
+#
+# Set Compiler Flags
+#
+set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OTHER_C_FLAGS} ${UNWANTED_C_WARNINGS}")
+set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OTHER_C_FLAGS} ${UNWANTED_C_WARNINGS}")
+
+
+if( "${MULLE_LANGUAGE}" STREQUAL "ObjC")
+   set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${UNWANTED_OBJC_WARNINGS}")
+   set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${UNWANTED_OBJC_WARNINGS}")
+endif()
+
+
+#
+# Set Linker Flags
+#

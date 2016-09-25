@@ -8,7 +8,15 @@ cmake_policy( SET CMP0054 NEW)
 if(APPLE)
    # baseline set to 10.6 for rpath
    cmake_minimum_required (VERSION 3.0)
-   set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
+
+   if( NOT DEFINED CMAKE_OSX_SYSROOT)
+      set(CMAKE_OSX_SYSROOT "/")   # means current OS X
+   endif()
+
+   if( NOT DEFINED CMAKE_OSX_DEPLOYMENT_TARGET)
+      set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
+   endif()
+
    set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
    # linker stuff
    set(BEGIN_ALL_LOAD "-all_load")
@@ -68,10 +76,6 @@ if( NOT DEPENDENCIES_DIR)
    set( DEPENDENCIES_DIR dependencies)
 endif()
 
-
-set( DEPENDENCIES_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/${DEPENDENCIES_DIR}/include")
-
-set( DEPENDENCIES_LIBRARY_DIRS
-   ${PROJECT_SOURCE_DIR}/${DEPENDENCIES_DIR}/lib)
-
-
+if( NOT ADDICTIONS_DIR)
+   set( ADDICTIONS_DIR addictions)
+endif()
