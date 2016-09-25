@@ -6,32 +6,41 @@ cmake_policy( SET CMP0054 NEW)
 
 
 if(APPLE)
-   # baseline set to 10.6 for rpath
    cmake_minimum_required (VERSION 3.0)
 
-   if( NOT DEFINED CMAKE_OSX_SYSROOT)
+   # CMAKE_OSX_SYSROOT must be set for CMAKE_OSX_DEPLOYMENT_TARGET (cmake bug)
+   if( NOT CMAKE_OSX_SYSROOT)
       set(CMAKE_OSX_SYSROOT "/")   # means current OS X
    endif()
 
-   if( NOT DEFINED CMAKE_OSX_DEPLOYMENT_TARGET)
+   # baseline set to 10.6 for rpath
+   if( NOT CMAKE_OSX_DEPLOYMENT_TARGET)
       set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
    endif()
 
    set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
+
    # linker stuff
    set(BEGIN_ALL_LOAD "-all_load")
    set(END_ALL_LOAD)
 else()
    if(WIN32)
       # may not be enough though...
+
       cmake_minimum_required (VERSION 3.4)
+
+      # set only for libraries ?
       set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+
       # linker stuff
       #set(BEGIN_ALL_LOAD "/OPT:NOREF /OPT:NOICF")
       #set(END_ALL_LOAD "/OPT:REF /OPT:ICF")
    else()
       cmake_minimum_required (VERSION 3.0)
+
+      # set only for libraries ?
       set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+
       # linker stuff
       set(BEGIN_ALL_LOAD "-Wl,--whole-archive")
       set(END_ALL_LOAD "-Wl,--no-whole-archive")
