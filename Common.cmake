@@ -10,7 +10,7 @@ if(APPLE)
 
    # CMAKE_OSX_SYSROOT must be set for CMAKE_OSX_DEPLOYMENT_TARGET (cmake bug)
    if( NOT CMAKE_OSX_SYSROOT)
-      set(CMAKE_OSX_SYSROOT "/")   # means current OS X
+      set( CMAKE_OSX_SYSROOT "/" CACHE STRING "SDK for OSX" FORCE)   # means current OS X
    endif()
 
    # baseline set to 10.6 for rpath
