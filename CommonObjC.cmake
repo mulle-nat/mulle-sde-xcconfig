@@ -3,8 +3,8 @@
 #
 
 set( COMMON_FRAMEWORK_DIRS
-${DEPENDENCIES_DIR}/Frameworks
-${ADDICTIONS_DIR}/Frameworks
+"${DEPENDENCIES_DIR}/Frameworks"
+"${ADDICTIONS_DIR}/Frameworks"
 )
 
 #

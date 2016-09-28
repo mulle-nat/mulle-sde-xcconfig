@@ -82,9 +82,9 @@ endif()
 # mulle-boostrap will set up the paths, so don't mess with it
 #
 if( NOT DEPENDENCIES_DIR)
-   set( DEPENDENCIES_DIR dependencies)
+   set( DEPENDENCIES_DIR "dependencies")
 endif()
 
 if( NOT ADDICTIONS_DIR)
-   set( ADDICTIONS_DIR addictions)
+   set( ADDICTIONS_DIR "addictions")
 endif()
