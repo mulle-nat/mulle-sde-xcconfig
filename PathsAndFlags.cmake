@@ -30,7 +30,3 @@ if( "${MULLE_LANGUAGE}" STREQUAL "ObjC")
    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${UNWANTED_OBJC_WARNINGS}")
 endif()
 
-
-#
-# Set Linker Flags
-#

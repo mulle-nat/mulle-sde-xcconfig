@@ -18,11 +18,11 @@ if(APPLE)
       set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
    endif()
 
-   set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
+   set( CMAKE_POSITION_INDEPENDENT_CODE FALSE)
 
    # linker stuff
-   set(BEGIN_ALL_LOAD "-all_load")
-   set(END_ALL_LOAD)
+   set( BEGIN_ALL_LOAD "-all_load")
+   set( END_ALL_LOAD)
 else()
    if(WIN32)
       # may not be enough though...
@@ -30,7 +30,7 @@ else()
       cmake_minimum_required (VERSION 3.4)
 
       # set only for libraries ?
-      set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+      set( CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
       # linker stuff
       #set(BEGIN_ALL_LOAD "/OPT:NOREF /OPT:NOICF")
@@ -39,11 +39,11 @@ else()
       cmake_minimum_required (VERSION 3.0)
 
       # set only for libraries ?
-      set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+      set( CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
       # linker stuff
-      set(BEGIN_ALL_LOAD "-Wl,--whole-archive")
-      set(END_ALL_LOAD "-Wl,--no-whole-archive")
+      set( BEGIN_ALL_LOAD "-Wl,--whole-archive")
+      set( END_ALL_LOAD "-Wl,--no-whole-archive")
    endif()
 endif()
 
@@ -78,13 +78,27 @@ endif()
 
 
 #
-# if using mulle_bootstrap, DEPENDENCIES_DIR  is defined and
+# if using mulle_bootstrap, DEPENDENCIES_DIR is defined and
 # mulle-boostrap will set up the paths, so don't mess with it
 #
 if( NOT DEPENDENCIES_DIR)
-   set( DEPENDENCIES_DIR "dependencies")
+   execute_process( COMMAND mulle-bootstrap paths -m dependencies
+                 WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+                 OUTPUT_VARIABLE DEPENDENCIES_DIR
+                 OUTPUT_STRIP_TRAILING_WHITESPACE)
+   message( STATUS "DEPENDENCIES_DIR is ${DEPENDENCIES_DIR} according to mulle-bootstrap")
+   if( NOT DEPENDENCIES_DIR)
+      set( DEPENDENCIES_DIR "dependencies")
+   endif()
 endif()
 
 if( NOT ADDICTIONS_DIR)
-   set( ADDICTIONS_DIR "addictions")
+   execute_process( COMMAND mulle-bootstrap paths -m addictions
+                 WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+                 OUTPUT_VARIABLE ADDICTIONS_DIR
+                 OUTPUT_STRIP_TRAILING_WHITESPACE)
+   message( STATUS "ADDICTIONS_DIR is ${ADDICTIONS_DIR} according to mulle-bootstrap")
+   if( NOT ADDICTIONS_DIR)
+      set( ADDICTIONS_DIR "addictions")
+   endif()
 endif()
