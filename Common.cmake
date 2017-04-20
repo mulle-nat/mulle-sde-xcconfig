@@ -4,7 +4,6 @@
 #
 cmake_policy( SET CMP0054 NEW)
 
-
 if(APPLE)
    cmake_minimum_required (VERSION 3.0)
 
@@ -48,7 +47,6 @@ else()
 endif()
 
 
-
 if( NOT MULLE_C_COMPILER_ID)
    if( ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows") AND ( {CMAKE_C_COMPILER_ID MATCHES "^(Clang|MulleClang)$") )
       set( MULLE_C_COMPILER_ID "MSVC-${CMAKE_C_COMPILER_ID}")
@@ -57,7 +55,6 @@ if( NOT MULLE_C_COMPILER_ID)
    endif()
 endif()
 
-
 if( NOT MULLE_CXX_COMPILER_ID)
    if( ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows") AND ( CMAKE_CXX_COMPILER_ID MATCHES "^(Clang|MulleClang)$") )
       set( MULLE_C_COMPILER_ID "MSVC-${CMAKE_CXX_COMPILER_ID}")
@@ -65,7 +62,6 @@ if( NOT MULLE_CXX_COMPILER_ID)
       set( MULLE_C_COMPILER_ID "${CMAKE_CXX_COMPILER_ID}")
    endif()
 endif()
-
 
 if( MULLE_C_COMPILER_ID MATCHES "^(Clang|AppleClang|MulleClang|GNU)$")
    set( UNWANTED_C_WARNINGS "-Wno-parentheses -Wno-int-to-void-pointer-cast")
