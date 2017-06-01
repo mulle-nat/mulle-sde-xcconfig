@@ -4,7 +4,7 @@
 #
 cmake_policy( SET CMP0054 NEW)
 
-if(APPLE)
+if( APPLE)
    cmake_minimum_required (VERSION 3.0)
 
    # CMAKE_OSX_SYSROOT must be set for CMAKE_OSX_DEPLOYMENT_TARGET (cmake bug)
@@ -43,6 +43,10 @@ else()
       # linker stuff
       set( BEGIN_ALL_LOAD "-Wl,--whole-archive")
       set( END_ALL_LOAD "-Wl,--no-whole-archive")
+
+      if( ${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+         set( OS_SPECIFIC_LIBRARIES -lpthread -ldl)
+      endif()
    endif()
 endif()
 
