@@ -12,7 +12,7 @@ if( APPLE)
       set( CMAKE_OSX_SYSROOT "/" CACHE STRING "SDK for OSX" FORCE)   # means current OS X
    endif()
 
-   # baseline set to 10.6 for rpath
+   # baseline set to minimum 10.6 for rpath
    if( NOT CMAKE_OSX_DEPLOYMENT_TARGET)
       set(CMAKE_OSX_DEPLOYMENT_TARGET "10.6" CACHE STRING "Deployment target for OSX" FORCE)
    endif()
