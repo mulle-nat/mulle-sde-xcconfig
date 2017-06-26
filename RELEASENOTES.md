@@ -1,3 +1,8 @@
+# 1.1.1
+
+* Don't produce a formula for this
+* set CMAKE_FIND_ROOT_PATH
+
 # 1.0.1
 
 * Finally versioned this.

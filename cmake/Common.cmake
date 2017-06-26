@@ -89,6 +89,7 @@ if( NOT DEPENDENCIES_DIR)
    message( STATUS "DEPENDENCIES_DIR is ${DEPENDENCIES_DIR} according to mulle-bootstrap")
    if( NOT DEPENDENCIES_DIR)
       set( DEPENDENCIES_DIR "dependencies")
+      set( CMAKE_FIND_ROOT_PATH ${DEPENDENCIES_DIR})
    endif()
 endif()
 
@@ -99,6 +100,10 @@ if( NOT ADDICTIONS_DIR)
                  OUTPUT_STRIP_TRAILING_WHITESPACE)
    message( STATUS "ADDICTIONS_DIR is ${ADDICTIONS_DIR} according to mulle-bootstrap")
    if( NOT ADDICTIONS_DIR)
+      set( CMAKE_FIND_ROOT_PATH
+${CMAKE_FIND_ROOT_PATH}
+${ADDICTIONS_DIR}
+)
       set( ADDICTIONS_DIR "addictions")
    endif()
 endif()
