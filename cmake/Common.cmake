@@ -20,8 +20,10 @@ if( APPLE)
    set( CMAKE_POSITION_INDEPENDENT_CODE FALSE)
 
    # linker stuff
-   set( BEGIN_ALL_LOAD "-all_load")
+   # prefix ObjC libraries with force_load ( OS X)
+   set( BEGIN_ALL_LOAD)
    set( END_ALL_LOAD)
+   set( FORCE_LOAD "-force_load")
 else()
    if(WIN32)
       # may not be enough though...
@@ -34,6 +36,7 @@ else()
       # linker stuff
       #set(BEGIN_ALL_LOAD "/OPT:NOREF /OPT:NOICF")
       #set(END_ALL_LOAD "/OPT:REF /OPT:ICF")
+      #set( FORCE_LOAD)
    else()
       cmake_minimum_required (VERSION 3.0)
 
@@ -41,8 +44,10 @@ else()
       set( CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
       # linker stuff
+   # prefix libraries with force_load ( OS X)
       set( BEGIN_ALL_LOAD "-Wl,--whole-archive")
       set( END_ALL_LOAD "-Wl,--no-whole-archive")
+      set( FORCE_LOAD)
 
       if( ${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
          set( OS_SPECIFIC_LIBRARIES -lpthread -ldl)

@@ -1,3 +1,7 @@
+### 2.0.0
+
+** use FORCE_LOAD on OS X, BEGIN_ALL_LOAD on Linux and others
+
 # 1.1.1
 
 * Don't produce a formula for this
