@@ -1,3 +1,7 @@
+### 2.0.1
+
+* fixes for mingw
+
 ### 2.0.0
 
 ** use FORCE_LOAD on OS X, BEGIN_ALL_LOAD on Linux and others
@@ -11,4 +15,3 @@
 
 * Finally versioned this.
 * Moved all cmake files into cmake directory.So change 'set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/mulle-configuration)' to 'set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/mulle-configuration/cmake)' in your CMakeLists.txt files
-
