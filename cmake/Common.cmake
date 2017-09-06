@@ -33,10 +33,14 @@ else()
       # set only for libraries ?
       set( CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
+      # need this I guess..
+      set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fms-extensions")	
+
       # linker stuff
       #set(BEGIN_ALL_LOAD "/OPT:NOREF /OPT:NOICF")
       #set(END_ALL_LOAD "/OPT:REF /OPT:ICF")
       #set( FORCE_LOAD)
+      set( OS_SPECIFIC_LIBRARIES psapi.lib)
    else()
       cmake_minimum_required (VERSION 3.0)
 
@@ -44,7 +48,7 @@ else()
       set( CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
       # linker stuff
-   # prefix libraries with force_load ( OS X)
+      # prefix libraries with force_load ( OS X)
       set( BEGIN_ALL_LOAD "-Wl,--whole-archive")
       set( END_ALL_LOAD "-Wl,--no-whole-archive")
       set( FORCE_LOAD)
@@ -89,9 +93,9 @@ endif()
 #
 if( NOT DEPENDENCIES_DIR)
    execute_process( COMMAND mulle-bootstrap paths -m dependencies
-                 WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
-                 OUTPUT_VARIABLE DEPENDENCIES_DIR
-                 OUTPUT_STRIP_TRAILING_WHITESPACE)
+                    WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+                    OUTPUT_VARIABLE DEPENDENCIES_DIR
+                    OUTPUT_STRIP_TRAILING_WHITESPACE)
    message( STATUS "DEPENDENCIES_DIR is ${DEPENDENCIES_DIR} according to mulle-bootstrap")
    if( NOT DEPENDENCIES_DIR)
       set( DEPENDENCIES_DIR "dependencies")
@@ -101,9 +105,9 @@ endif()
 
 if( NOT ADDICTIONS_DIR)
    execute_process( COMMAND mulle-bootstrap paths -m addictions
-                 WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
-                 OUTPUT_VARIABLE ADDICTIONS_DIR
-                 OUTPUT_STRIP_TRAILING_WHITESPACE)
+                    WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+                    OUTPUT_VARIABLE ADDICTIONS_DIR
+                    OUTPUT_STRIP_TRAILING_WHITESPACE)
    message( STATUS "ADDICTIONS_DIR is ${ADDICTIONS_DIR} according to mulle-bootstrap")
    if( NOT ADDICTIONS_DIR)
       set( CMAKE_FIND_ROOT_PATH
