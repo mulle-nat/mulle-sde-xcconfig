@@ -23,7 +23,7 @@ if( APPLE)
    # prefix ObjC libraries with force_load ( OS X)
    set( BEGIN_ALL_LOAD)
    set( END_ALL_LOAD)
-   set( FORCE_LOAD "-force_load")
+   set( FORCE_LOAD_PREFIX "-force_load ")
 else()
    if(WIN32)
       # may not be enough though...
@@ -33,13 +33,8 @@ else()
       # set only for libraries ?
       set( CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
-      # need this I guess..
-      set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fms-extensions")	
-
-      # linker stuff
-      #set(BEGIN_ALL_LOAD "/OPT:NOREF /OPT:NOICF")
-      #set(END_ALL_LOAD "/OPT:REF /OPT:ICF")
-      #set( FORCE_LOAD)
+      # linker stuff (since VS 2015)
+      set( FORCE_LOAD_PREFIX "-WHOLEARCHIVE:")
       set( OS_SPECIFIC_LIBRARIES psapi.lib)
    else()
       cmake_minimum_required (VERSION 3.0)
@@ -51,7 +46,7 @@ else()
       # prefix libraries with force_load ( OS X)
       set( BEGIN_ALL_LOAD "-Wl,--whole-archive")
       set( END_ALL_LOAD "-Wl,--no-whole-archive")
-      set( FORCE_LOAD)
+      set( FORCE_LOAD_PREFIX)
 
       if( ${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
          set( OS_SPECIFIC_LIBRARIES -lpthread -ldl)
@@ -61,7 +56,6 @@ endif()
 
 
 if( NOT MULLE_C_COMPILER_ID)
-   message( status "A = ${CMAKE_SYSTEM_NAME}. B=${CMAKE_C_COMPILER_ID}")
    if( ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows") AND ( "${CMAKE_C_COMPILER_ID}" MATCHES "^(Clang|MulleClang)$") )
       set( MULLE_C_COMPILER_ID "MSVC-${CMAKE_C_COMPILER_ID}")
    else()
@@ -85,6 +79,16 @@ else()
       set( UNWANTED_C_WARNINGS "/D_CRT_SECURE_NO_WARNINGS /wd4068 /wd4113")
    endif()
 endif()
+
+if( "${MULLE_C_COMPILER_ID}" MATCHES "^(MSVC-Clang|MSVC-MulleClang)$")
+   # need this to emit /include code
+   set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fms-extensions")
+      # need this so /include code gets used 
+   set( CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /LTCG")   
+   set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LTCG")   
+endif()
+
+
 
 
 #
