@@ -2,6 +2,8 @@
 # Common stuff for Debug and Release
 # C and ObjC
 #
+set( MULLE_CONFIGURATION_VERSION 3)
+
 cmake_policy( SET CMP0054 NEW)
 
 if( APPLE)
@@ -83,9 +85,9 @@ endif()
 if( "${MULLE_C_COMPILER_ID}" MATCHES "^(MSVC-Clang|MSVC-MulleClang)$")
    # need this to emit /include code
    set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fms-extensions")
-      # need this so /include code gets used 
-   set( CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /LTCG")   
-   set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LTCG")   
+      # need this so /include code gets used
+   set( CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /LTCG")
+   set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LTCG")
 endif()
 
 
