@@ -56,11 +56,12 @@ endif()
 
 foreach( library ${STANDALONE_ALL_LOAD_LIBRARIES})
    list( APPEND STANDALONE_FORCE_ALL_LOAD_LIBRARIES "${FORCE_LOAD_PREFIX}${library}")
-endforeach( library)
+endforeach()
 
 foreach( prefix ${STANDALONE_SYMBOL_PREFIXES})
-   list( APPEND STANDALONE_DUMPDEF_SYMBOL_PREFIXES "--prefix ${prefix}")
-endforeach( prefix)
+   list( APPEND STANDALONE_DUMPDEF_SYMBOL_PREFIXES "--prefix")
+   list( APPEND STANDALONE_DUMPDEF_SYMBOL_PREFIXES "${prefix}")
+endforeach()
 
 #
 # Standalone
@@ -82,9 +83,9 @@ if( MSVC)
    add_custom_command( OUTPUT ${DEF_FILE}
                        COMMAND mulle-mingw-dumpdef.bat -o "${DEF_FILE}"
                                --directory "${BUILD_RELATIVE_DEPENDENCIES_DIR}/lib"
-                               "${STANDALONE_DUMPDEF_SYMBOL_PREFIXES}"
+                               ${STANDALONE_DUMPDEF_SYMBOL_PREFIXES}
                                ${STANDALONE_ALL_LOAD_LIBRARIES}
-                       DEPENDS "${STANDALONE_ALL_LOAD_LIBRARIES}"
+                       DEPENDS ${STANDALONE_ALL_LOAD_LIBRARIES}
                        VERBATIM)
    find_program( CREATE_INC mulle-objc-create-dependencies-inc.bat ${DEPENDENCIES_DIR}/bin)
 endif()
