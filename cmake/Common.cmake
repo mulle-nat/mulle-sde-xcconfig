@@ -37,7 +37,6 @@ else()
 
       # linker stuff (since VS 2015)
       set( FORCE_LOAD_PREFIX "-WHOLEARCHIVE:")
-      set( OS_SPECIFIC_LIBRARIES psapi.lib)
    else()
       cmake_minimum_required (VERSION 3.0)
 
@@ -49,10 +48,6 @@ else()
       set( BEGIN_ALL_LOAD "-Wl,--whole-archive")
       set( END_ALL_LOAD "-Wl,--no-whole-archive")
       set( FORCE_LOAD_PREFIX)
-
-      if( ${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-         set( OS_SPECIFIC_LIBRARIES -lpthread -ldl)
-      endif()
    endif()
 endif()
 
@@ -83,15 +78,14 @@ else()
 endif()
 
 if( "${MULLE_C_COMPILER_ID}" MATCHES "^(MSVC-Clang|MSVC-MulleClang)$")
-   # need this to emit /include code
-   set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fms-extensions")
-      # need this so /include code gets used
-   set( CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /LTCG")
-   set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LTCG")
+   # need this to emit -fms-extensions for /include code
+   set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+   # need this /lctg so /include code gets used
+   # 4211 is for classes..
+   set( CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /ignore:4221")
+   set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ignore:4221")
+   set( CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} /ignore:4221")
 endif()
-
-
-
 
 #
 # if using mulle_bootstrap, DEPENDENCIES_DIR is defined and
@@ -117,9 +111,9 @@ if( NOT ADDICTIONS_DIR)
    message( STATUS "ADDICTIONS_DIR is ${ADDICTIONS_DIR} according to mulle-bootstrap")
    if( NOT ADDICTIONS_DIR)
       set( CMAKE_FIND_ROOT_PATH
-${CMAKE_FIND_ROOT_PATH}
-${ADDICTIONS_DIR}
-)
+           ${CMAKE_FIND_ROOT_PATH}
+           ${ADDICTIONS_DIR}
+      )
       set( ADDICTIONS_DIR "addictions")
    endif()
 endif()
