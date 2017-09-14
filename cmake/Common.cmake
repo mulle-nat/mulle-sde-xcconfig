@@ -78,9 +78,7 @@ else()
 endif()
 
 if( "${MULLE_C_COMPILER_ID}" MATCHES "^(MSVC-Clang|MSVC-MulleClang)$")
-   # need this to emit -fms-extensions for /include code
-   set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
-   # need this /lctg so /include code gets used
+   # set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
    # 4211 is for classes..
    set( CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /ignore:4221")
    set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ignore:4221")

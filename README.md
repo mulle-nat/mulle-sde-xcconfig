@@ -28,7 +28,9 @@ endif()
 
 ## Xcode configurations
 
-These configurations are embedded into various projects, probably using `mulle-bootstrap`.
+These configurations are embedded into various projects, probably using
+`mulle-bootstrap`. Confusingly they aren't really identical to the cmake stuff.
+They might just go away.
 
 ### How to embed
 

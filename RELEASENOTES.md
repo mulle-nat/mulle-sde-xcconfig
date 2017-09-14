@@ -1,9 +1,9 @@
 # 3.0.0
 
-* Add Standalone.cmake and DependenciesIncObjC.cmake for often used functionality
+* Added Standalone.cmake and DependenciesIncObjC.cmake for often used functionality
 * move Xcode files into own subdirectory
 * C:/Program Files/Git/WHOLEARCHIVE option for mingw. FORCE_LOAD is now a FORCE_LOAD_PREFIX
-
+* Added OptimizedLinkObjC.cmake and ExecutableObjC.cmake to simplify mulle-objc-init
 
 ### 2.0.1
 
