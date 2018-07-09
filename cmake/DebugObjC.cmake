@@ -1,7 +1,0 @@
-#
-#
-#
-set( COMMON_FRAMEWORK_DIRS
-"${DEPENDENCIES_DIR}/Debug/Framework"
-${COMMON_FRAMEWORK_DIRS}
-)
