@@ -5,6 +5,6 @@
 //  Created by Nat! on 21.10.15.
 //  Copyright (c) 2015 Mulle kybernetiK. All rights reserved.
 //
-ARCHS = $(ARCHS_STANDARD_32_64_BIT)
+ARCHS = $(ARCHS_STANDARD)
 MACOSX_DEPLOYMENT_TARGET = 10.6
 SDKROOT = macosx
